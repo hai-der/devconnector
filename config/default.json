@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://haider:haider@devconnector-lfmok.mongodb.net/test?retryWrites=true&w=majority"
+}
