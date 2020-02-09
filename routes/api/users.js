@@ -18,7 +18,7 @@ router.post(
     check('name', 'Name is required')
       .not()
       .isEmail(),
-    check('email', 'Username must be a valid email').isEmail(),
+    check('email', 'Please include a valid email').isEmail(),
     check('password', 'Password must be 6 or more characters').isLength({
       min: 6
     })
@@ -36,8 +36,9 @@ router.post(
 
       // if user already exists return bad request
       if (user) {
-        console.error();
-        return res.status(400).json([{ msg: 'User already exists' }]); // bad request
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'User already exists' }] });
       }
 
       // fetch gravatar, create new user, encrypt password, and return jswonwebtoken
