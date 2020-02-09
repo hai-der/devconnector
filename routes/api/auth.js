@@ -1,11 +1,19 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../../models/User');
+const auth = require('../../middleware/auth');
 
 // @route       GET api/auth
 // @desc        test route
 // @access      public
-router.get('/', (req, res) => {
-  res.send('auth endpoint');
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: 'Server Error (auth)' });
+  }
 });
 
 module.exports = router;
