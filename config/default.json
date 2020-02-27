@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://haider:haider@devconnector-lfmok.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "duckduckgoose"
+  "jwtSecret": "duckduckgoose",
+  "githubClientId": "b99e9e8b73f4b8550a02",
+  "githubSecret": "00ab2c8cfeacb5c7582e70874b1597814752c5c1"
 }
