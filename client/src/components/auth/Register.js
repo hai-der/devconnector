@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../redux/actions/alert.actions';
+import { registerUser } from '../../redux/actions/auth.actions';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, registerUser }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,9 +24,9 @@ const Register = ({ setAlert }) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setAlert('Passwords do not match', 'danger');
-      return;
+    } else {
+      registerUser({ name, email, password });
     }
-    console.log(formData);
   };
 
   return (
@@ -91,7 +92,8 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, registerUser })(Register);
