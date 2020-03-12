@@ -15,13 +15,13 @@ router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id
-    }).populate('user', ['name', 'avatar']);
+    });
 
     if (!profile) {
       return res.status(400).json({ msg: 'User profile not found' });
     }
 
-    res.json(profile);
+    res.json(profile.populate('user', ['name', 'avatar']));
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ msg: 'Server Error (profile)' });
