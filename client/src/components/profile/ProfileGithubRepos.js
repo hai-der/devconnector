@@ -7,7 +7,7 @@ import { getGithubRepos } from '../../redux/actions/profile.actions';
 const ProfileGithubRepos = ({ getGithubRepos, username, repos }) => {
   useEffect(() => {
     getGithubRepos(username);
-  }, [getGithubRepos]);
+  }, [getGithubRepos, username]);
   return (
     <div className='profile-github'>
       <h2 className='text-primary my-1'>Github Repos</h2>
@@ -30,13 +30,13 @@ const ProfileGithubRepos = ({ getGithubRepos, username, repos }) => {
             </div>
             <div>
               <ul>
-                <li class='badge badge-primary'>
+                <li className='badge badge-primary'>
                   Stars: {repo.stargazers_count}
                 </li>
-                <li class='badge badge-dark'>
+                <li className='badge badge-dark'>
                   Watchers: {repo.watchers_count}
                 </li>
-                <li class='badge badge-light'>Forks: {repo.forks_count}</li>
+                <li className='badge badge-light'>Forks: {repo.forks_count}</li>
               </ul>
             </div>
           </div>
