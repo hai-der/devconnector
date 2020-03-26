@@ -1,4 +1,5 @@
 import axios from 'axios';
+import normalizeUrl from 'normalize-url';
 import { setAlert } from './alert.actions';
 import {
   GET_PROFILE,
@@ -93,6 +94,20 @@ export const createProfile = (
         'Content-Type': 'application/json'
       }
     };
+
+    // sanitize input
+    formData.website = formData.website ? normalizeUrl(formData.website) : '';
+    formData.twitter = formData.twitter ? normalizeUrl(formData.twitter) : '';
+    formData.facebook = formData.facebook
+      ? normalizeUrl(formData.facebook)
+      : '';
+    formData.linkedin = formData.linkedin
+      ? normalizeUrl(formData.linkedin)
+      : '';
+    formData.youtube = formData.youtube ? normalizeUrl(formData.youtube) : '';
+    formData.instagram = formData.instagram
+      ? normalizeUrl(formData.instagram)
+      : '';
 
     const res = await axios.post('/api/profile', formData, config);
 

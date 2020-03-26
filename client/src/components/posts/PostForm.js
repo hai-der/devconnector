@@ -25,6 +25,7 @@ const PostForm = ({ addPost }) => {
           cols='30'
           rows='5'
           placeholder='Create a post'
+          value={text}
           required
           onChange={e => handleChange(e)}
         ></textarea>
